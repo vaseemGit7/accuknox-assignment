@@ -1,18 +1,10 @@
-import { useSelector } from "react-redux";
+import Category from "./Category";
 
 const Dashboard = () => {
-  const data = useSelector((state) => state.dataReducer);
   return (
     <>
-      {data.categories.map((category) => (
-        <div
-          className="flex flex-row border-2 border-red-500"
-          key={category.id}
-        >
-          <p>{category.name}</p>
-          <p>{category.widgets}</p>
-        </div>
-      ))}
+      <Category categoryId="1"></Category>
+      <Category categoryId="2"></Category>
     </>
   );
 };
