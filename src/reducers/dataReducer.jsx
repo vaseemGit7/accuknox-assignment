@@ -1,4 +1,5 @@
 export const ADD_WIDGET = "ADD_WIDGET";
+export const REMOVE_WIDGET = "REMOVE_WIDGET";
 
 const initialState = {
   categories: [
@@ -34,6 +35,20 @@ const dataReducer = (state = initialState, action) => {
             ? {
                 ...category,
                 widgets: [...category.widgets, action.payload.widget],
+              }
+            : category
+        ),
+      };
+    case REMOVE_WIDGET:
+      return {
+        ...state,
+        categories: state.categories.map((category) =>
+          category.id === action.payload.categoryId
+            ? {
+                ...category,
+                widgets: category.widgets.filter(
+                  (widget) => widget.id !== action.payload.widgetId
+                ),
               }
             : category
         ),
