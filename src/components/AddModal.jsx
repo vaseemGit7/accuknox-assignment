@@ -3,7 +3,7 @@ import WidgetForm from "./forms/WidgetForm";
 import { IonIcon } from "@ionic/react";
 import { trashOutline } from "ionicons/icons";
 import { useDispatch } from "react-redux";
-import { removeWidget } from "../actions/dataActions";
+import { removeWidget, toggleWidget } from "../actions/dataActions";
 
 const AddModal = ({
   data,
@@ -22,6 +22,10 @@ const AddModal = ({
 
   const handleRemoveWidget = (widgetId) => {
     dispatch(removeWidget(currentCategory.id, widgetId));
+  };
+
+  const handleToggleWidget = (widgetId) => {
+    dispatch(toggleWidget(currentCategory.id, widgetId));
   };
 
   useEffect(() => {
@@ -80,6 +84,8 @@ const AddModal = ({
                         type="checkbox"
                         className="h-4 w-4 rounded-sm accent-neutral-800"
                         value={widget.widgetId}
+                        checked={widget.widgetChecked}
+                        onChange={() => handleToggleWidget(widget.id)}
                       />
                       <p>{widget.widgetName}</p>
                     </label>
