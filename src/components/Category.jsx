@@ -28,15 +28,18 @@ const Category = ({ categoryId }) => {
       </p>
       <div className="flex gap-1 overflow-x-scroll">
         <>
-          {category.widgets.map((widget) => (
-            <div
-              className="p-2 flex flex-col rounded-md border-2 border-neutral-800"
-              key={widget.id}
-            >
-              <p>{widget.widgetName}</p>
-              <p>{widget.widgetText}</p>
-            </div>
-          ))}
+          {category.widgets.map(
+            (widget) =>
+              widget.widgetChecked && (
+                <div
+                  className="p-2 flex flex-col rounded-md border-2 border-neutral-800"
+                  key={widget.id}
+                >
+                  <p>{widget.widgetName}</p>
+                  <p>{widget.widgetText}</p>
+                </div>
+              )
+          )}
         </>
         <div className="p-2 flex items-center rounded-md border-2 border-neutral-800">
           <button
