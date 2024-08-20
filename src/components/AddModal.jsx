@@ -1,5 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import WidgetForm from "./forms/WidgetForm";
+import { IonIcon } from "@ionic/react";
+import { trashOutline } from "ionicons/icons";
+import { useDispatch } from "react-redux";
+import { removeWidget } from "../actions/dataActions";
 
 const AddModal = ({
   data,
@@ -10,9 +14,14 @@ const AddModal = ({
 }) => {
   const [toggleForm, setToggleForm] = useState(false);
   const dialogModal = useRef(null);
+  const dispatch = useDispatch();
 
   const handleToggleForm = () => {
     setToggleForm((prevState) => !prevState);
+  };
+
+  const handleRemoveWidget = (widgetId) => {
+    dispatch(removeWidget(currentCategory.id, widgetId));
   };
 
   useEffect(() => {
@@ -63,7 +72,7 @@ const AddModal = ({
               <>
                 {currentCategory.widgets.map((widget) => (
                   <div
-                    className="p-2 outline-1 outline outline-neutral-400 rounded mb-2"
+                    className="flex justify-between p-2 outline-1 outline outline-neutral-400 rounded mb-2"
                     key={widget.id}
                   >
                     <label className="flex items-center gap-2 text-base font-normal cursor-pointer">
@@ -74,6 +83,12 @@ const AddModal = ({
                       />
                       <p>{widget.widgetName}</p>
                     </label>
+                    <button onClick={() => handleRemoveWidget(widget.id)}>
+                      <IonIcon
+                        icon={trashOutline}
+                        className=" text-red-600 text-xl cursor-pointer hover:scale-[1.05]"
+                      />
+                    </button>
                   </div>
                 ))}
                 <button
