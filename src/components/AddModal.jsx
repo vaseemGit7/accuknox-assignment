@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import WidgetForm from "./forms/WidgetForm";
 
 const AddModal = ({
   data,
@@ -7,7 +8,12 @@ const AddModal = ({
   handleDialogToggle,
   handleCurrentCategory,
 }) => {
+  const [toggleForm, setToggleForm] = useState(false);
   const dialogModal = useRef(null);
+
+  const handleToggleForm = () => {
+    setToggleForm((prevState) => !prevState);
+  };
 
   useEffect(() => {
     if (dialogToggle) {
@@ -48,21 +54,36 @@ const AddModal = ({
             ))}
           </div>
           <div className="mt-2">
-            {currentCategory.widgets.map((widget) => (
-              <div
-                className="p-2 outline-1 outline outline-neutral-400 rounded mb-2"
-                key={widget.id}
-              >
-                <label className="flex items-center gap-2 text-base font-normal cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded-sm accent-neutral-800"
-                    value={widget.widgetId}
-                  />
-                  <p>{widget.widgetName}</p>
-                </label>
-              </div>
-            ))}
+            {toggleForm ? (
+              <WidgetForm
+                categoryId={currentCategory.id}
+                handleToggleForm={handleToggleForm}
+              />
+            ) : (
+              <>
+                {currentCategory.widgets.map((widget) => (
+                  <div
+                    className="p-2 outline-1 outline outline-neutral-400 rounded mb-2"
+                    key={widget.id}
+                  >
+                    <label className="flex items-center gap-2 text-base font-normal cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4 rounded-sm accent-neutral-800"
+                        value={widget.widgetId}
+                      />
+                      <p>{widget.widgetName}</p>
+                    </label>
+                  </div>
+                ))}
+                <button
+                  className="w-full p-2 outline outline-1 outline-neutral-400 font-medium rounded mb-2"
+                  onClick={handleToggleForm}
+                >
+                  + Add
+                </button>
+              </>
+            )}
           </div>
         </dialog>
       )}
