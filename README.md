@@ -75,6 +75,10 @@ Access the server
 ```
 
 
+## Screenshots
+
+![App Screenshot](https://github.com/user-attachments/assets/b3005828-d410-4f08-83ac-a509f0ece69a)
+
 ## Author
 
 Vaseem Ahamed
