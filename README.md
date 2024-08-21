@@ -1,13 +1,83 @@
-<<<<<<< HEAD
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Accuknox Frontend Trainee Assignemnt
 
-Currently, two official plugins are available:
+This project is a Widget Dashboard, developed as part of an assignment for Accuknox. It is built using React.js for the UI, Redux for state management, and Tailwind CSS for styling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# accuknox-assignment
-This is an assignment repository for Accuknox Frontend Trainee
->>>>>>> 0256967a273e3b018d2dc5187fe7c2b61675d9f1
+Check out Live Site [Here](https://accuknox-assignment-vaseemgit7s-projects.vercel.app/)
+
+## Features
+
+- Add Widgets to specific Categories
+- Remove Widgets from Categories
+- Toggle widgets visibility
+- Search through widgets
+
+## Built with
+
+### Languages
+
+- HTML
+- CSS
+- JavaScript
+
+### Libraries / Frameworks
+
+- React JS
+- Redux
+- Tailwind CSS
+
+### Tools
+
+- ESLint + Airbnb Style Guide
+- Git and Github
+- Linux terminal
+- Prettier
+- Visual Studio Code
+- Vite
+
+### Dependencies
+
+- [formik](https://www.npmjs.com/package/formik)
+- [ionicons](https://www.npmjs.com/package/ionicons)
+- [react-redux](https://www.npmjs.com/package/react-redux)
+- [redux](https://www.npmjs.com/package/redux)
+- [uuid](https://www.npmjs.com/package/uuid)
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/vaseemGit7/accuknox-assignment.git
+```
+
+Go to the project directory
+
+```bash
+  cd accuknox-assignment
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+Access the server
+
+```bash
+  http://localhost:5173/
+```
+
+
+## Author
+
+Vaseem Ahamed
+
+- Github: [Vaseem-Ahamed](https://github.com/)
+- LinkedIn: [Vaseem-Ahamed](https://www.linkedin.com/in/vaseem-ahamed-va/)
