@@ -6,30 +6,36 @@ const initialState = {
   categories: [
     {
       id: "1",
-      name: "Category 1",
+      name: "CSPM Executive Dashboard",
       widgets: [
         {
           id: "11",
-          widgetName: "testOne",
-          widgetText: "testOne is a test",
+          widgetName: "Cloud Accounts",
+          widgetText: "Text message of Cloud Accounts",
           widgetChecked: true,
         },
         {
           id: "12",
-          widgetName: "testThree",
-          widgetText: "testThree is a test",
+          widgetName: "Cloud Account Risk Assessment",
+          widgetText: "Text message of Cloud Account Risk Assessment",
           widgetChecked: true,
         },
       ],
     },
     {
       id: "2",
-      name: "Category 2",
+      name: "CWPP Dashboard",
       widgets: [
         {
+          id: "21",
+          widgetName: "Top 5 Namespace Specific Alerts",
+          widgetText: "Text message of Top 5 Namespace Specifc Alerts",
+          widgetChecked: true,
+        },
+        {
           id: "22",
-          widgetName: "testTwo",
-          widgetText: "testTwo is a test",
+          widgetName: "Workload Alerts",
+          widgetText: "Text message of Workload Alerts",
           widgetChecked: true,
         },
       ],
