@@ -9,15 +9,15 @@ import { toggleWidget } from "../actions/dataActions";
 const Category = ({ categoryId }) => {
   const data = useSelector((state) => state.dataReducer);
   const [dialogToggle, setDialogToggle] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState(null);
+  const [currentCategoryId, setCurrentCategoryId] = useState(null);
   const dispatch = useDispatch();
 
   const category = data.categories.find(
     (category) => category.id === categoryId
   );
 
-  const handleCurrentCategory = (category) => {
-    setCurrentCategory(category);
+  const handleCurrentCategoryId = (categoryId) => {
+    setCurrentCategoryId(categoryId);
   };
 
   const handleDialogToggle = () => {
@@ -27,8 +27,6 @@ const Category = ({ categoryId }) => {
   const handleToggleWidget = (widgetId) => {
     dispatch(toggleWidget(categoryId, widgetId));
   };
-
-  console.log(currentCategory);
 
   return (
     <div className="px-3 py-2">
@@ -76,7 +74,7 @@ const Category = ({ categoryId }) => {
           <button
             className="flex gap-2 items-center outline outline-1 outline-neutral-400 text-neutral-500 font-medium rounded py-1 px-3 hover:bg-neutral-100"
             onClick={() => {
-              handleCurrentCategory(category);
+              handleCurrentCategoryId(category.id);
               handleDialogToggle();
             }}
           >
@@ -88,9 +86,9 @@ const Category = ({ categoryId }) => {
       <AddModal
         data={data}
         dialogToggle={dialogToggle}
-        currentCategory={currentCategory}
+        currentCategoryId={currentCategoryId}
         handleDialogToggle={handleDialogToggle}
-        handleCurrentCategory={handleCurrentCategory}
+        handleCurrentCategoryId={handleCurrentCategoryId}
       />
     </div>
   );
