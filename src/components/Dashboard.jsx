@@ -1,4 +1,6 @@
 import { IonIcon } from "@ionic/react";
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   ellipsisVertical,
   sync,
@@ -12,6 +14,34 @@ import {
 import Category from "./Category";
 
 const Dashboard = () => {
+  const searchRef = useRef("");
+  const [searchQuery, setSearchQuery] = useState(null);
+  const data = useSelector((state) => state.dataReducer);
+
+  const filterWidget = (queryValue) => {
+    const searchResult = data.categories.map((category) => ({
+      ...category,
+      widgets: category.widgets.filter(
+        (widget) =>
+          widget.widgetName.toLowerCase().includes(queryValue.toLowerCase()) ||
+          widget.widgetText.toLowerCase().includes(queryValue.toLowerCase())
+      ),
+    }));
+    setSearchQuery(searchResult);
+  };
+
+  const handleSeachQuery = (e) => {
+    if ((e.key = "Enter")) {
+      filterWidget(searchRef.current.value);
+    }
+  };
+
+  const queryCategory = searchQuery?.filter(
+    (category) => category.widgets.length > 0
+  );
+
+  const categoriesId = ["1", "2"];
+
   return (
     <>
       <div className="flex justify-between px-4 py-2 bg-neutral-50">
@@ -26,11 +56,11 @@ const Dashboard = () => {
         <div className="flex gap-4 items-center">
           <div className="relative w-64 flex justify-between">
             <input
-              // ref={searchRef}
+              ref={searchRef}
               className="py-1 px-2 rounded-md text-sm text-neutral-600 bg-neutral-100 outline outline-1 outline-neutral-200 hover:outline-neutral-300 focus:outline-neutral-300"
               type="text"
               placeholder="Search anything..."
-              // onKeyDown={handleSeachQuery}
+              onKeyDown={handleSeachQuery}
             ></input>
             <IonIcon
               icon={searchOutline}
@@ -70,8 +100,17 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <Category categoryId="1"></Category>
-        <Category categoryId="2"></Category>
+        {searchQuery
+          ? queryCategory.map((category) => (
+              <Category
+                key={category.id}
+                categoryId={category.id}
+                queryWidgets={category.widgets}
+              />
+            ))
+          : categoriesId.map((categoryId) => (
+              <Category key={categoryId} categoryId={categoryId} />
+            ))}
       </div>
     </>
   );
